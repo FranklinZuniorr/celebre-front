@@ -1,7 +1,65 @@
-<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+<form class="formNewCelebration" [formGroup]="myForm" (ngSubmit)="onSubmit()">
     <mat-form-field class="example-full-width">
-        <mat-label>Favorite food</mat-label>
-        <input matInput placeholder="Ex. Pizza" value="Sushi">
+        <mat-label>Título da celebração:</mat-label>
+        <input 
+        matInput 
+        placeholder="Título da celebração"
+        formControlName="celebrationTitle"
+        >
+        <mat-error *ngIf="myForm.get('celebrationTitle')?.invalid">
+            {{ getErrorMessageCelebrationTitleField() }}
+        </mat-error>
     </mat-form-field>
-    <button type="submit" [disabled]="myForm.invalid">Submit</button>
+    <mat-form-field class="example-full-width">
+        <mat-label>Nome da pessoa:</mat-label>
+        <input 
+        matInput 
+        placeholder="Nome da pessoa"
+        formControlName="personName"
+        >
+        <mat-error *ngIf="myForm.get('personName')?.invalid">
+            {{ getErrorMessagePersonNameField() }}
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+        <mat-label>Mensagem especial:</mat-label>
+        <input 
+        matInput 
+        placeholder="Mensagem especial"
+        formControlName="description"
+        >
+        <mat-error *ngIf="myForm.get('description')?.invalid">
+            {{ getErrorMessageDescriptionField() }}
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+        <mat-label>Vídeo do YouTube:</mat-label>
+        <input 
+        matInput 
+        placeholder="Vídeo do YouTube"
+        formControlName="youtubeUrl"
+        >
+        <mat-error *ngIf="myForm.get('youtubeUrl')?.invalid">
+            {{ getErrorMessageYoutubeUrlField() }}
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+        <mat-label>Frase de destaque final:</mat-label>
+        <input 
+        matInput 
+        placeholder="Frase final"
+        formControlName="endPhrase"
+        >
+        <mat-error *ngIf="myForm.get('endPhrase')?.invalid">
+            {{ getErrorMessageEndPhraseField() }}
+        </mat-error>
+    </mat-form-field>
+    <div>
+        <input type="file" (change)="onFileSelected($event)" accept="image/*">
+        <div *ngIf="selectedImage">
+          <h3>Imagem Selecionada:</h3>
+          <img [src]="selectedImage" alt="Preview" width="100">
+        </div>
+    </div>
+    <button type="submit">Criar celebração</button>
 </form>

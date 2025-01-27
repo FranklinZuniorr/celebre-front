@@ -1,5 +1,5 @@
 <form class="formNewCelebration" [formGroup]="myForm" (ngSubmit)="onSubmit()">
-    <mat-form-field class="example-full-width">
+    <mat-form-field class="formNewCelebration_input">
         <mat-label>Título da celebração:</mat-label>
         <input 
         matInput 
@@ -10,7 +10,7 @@
             {{ getErrorMessageCelebrationTitleField() }}
         </mat-error>
     </mat-form-field>
-    <mat-form-field class="example-full-width">
+    <mat-form-field class="formNewCelebration_input">
         <mat-label>Nome da pessoa:</mat-label>
         <input 
         matInput 
@@ -21,7 +21,7 @@
             {{ getErrorMessagePersonNameField() }}
         </mat-error>
     </mat-form-field>
-    <mat-form-field class="example-full-width">
+    <mat-form-field class="formNewCelebration_input">
         <mat-label>Mensagem especial:</mat-label>
         <input 
         matInput 
@@ -32,7 +32,7 @@
             {{ getErrorMessageDescriptionField() }}
         </mat-error>
     </mat-form-field>
-    <mat-form-field class="example-full-width">
+    <mat-form-field class="formNewCelebration_input">
         <mat-label>Vídeo do YouTube:</mat-label>
         <input 
         matInput 
@@ -43,7 +43,7 @@
             {{ getErrorMessageYoutubeUrlField() }}
         </mat-error>
     </mat-form-field>
-    <mat-form-field class="example-full-width">
+    <mat-form-field class="formNewCelebration_input">
         <mat-label>Frase de destaque final:</mat-label>
         <input 
         matInput 
@@ -54,10 +54,11 @@
             {{ getErrorMessageEndPhraseField() }}
         </mat-error>
     </mat-form-field>
-    <div>
-        <input type="file" (change)="onFileSelected($event)" accept="image/*">
-        <div *ngIf="selectedImage">
-          <h3>Imagem Selecionada:</h3>
+    <div class="formNewCelebration_imageSelectArea">
+        <button type="button" (click)="triggerFileInput()">Selecionar Imagem</button>
+        <input id="fileUpload" type="file" (change)="onFileSelected($event)" accept="image/*" hidden>
+        <div class="formNewCelebration_imageSelectArea_preview" *ngIf="selectedImage">
+          <span>Imagem Selecionada:</span>
           <img [src]="selectedImage" alt="Preview" width="100">
         </div>
     </div>

@@ -1,3 +1,16 @@
+@use '../../../../../vars.scss' as vars;
+
+@mixin buttonCustom {
+    width: 100%;
+    height: 2rem;
+    background-color: unset;
+    border: 1px solid #ffffff;
+    border-radius: 0.5rem;
+    color: white;
+    font-weight: 800;
+    cursor: pointer;
+}
+
 .formNewCelebration {
     display: flex;
     flex-direction: column;
@@ -10,26 +23,25 @@
     &_imageSelectArea {
         display: flex;
         flex-direction: column;
-        gap: 0.5rem;
+        gap: 1rem;
         align-items: center;
         margin-bottom: 1.5rem;
 
         button {
-            width: 100%;
+            @include buttonCustom();
         }
 
-        &_preview {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.5rem;
-
-            img {
-                width: 5rem;
-                height: 5rem;
-                border-radius: 1rem;
-                object-fit: 1/1;
-            }
+        img {
+            width: 5rem;
+            height: 5rem;
+            border-radius: 1rem;
+            object-fit: 1/1;
         }
+    }
+
+    button[type="submit"] {
+        @include buttonCustom();
+        background-color: vars.$white;
+        color: vars.$black;
     }
 }

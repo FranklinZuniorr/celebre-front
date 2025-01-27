@@ -57,10 +57,7 @@
     <div class="formNewCelebration_imageSelectArea">
         <button type="button" (click)="triggerFileInput()">Selecionar Imagem</button>
         <input id="fileUpload" type="file" (change)="onFileSelected($event)" accept="image/*" hidden>
-        <div class="formNewCelebration_imageSelectArea_preview" *ngIf="selectedImage">
-          <span>Imagem Selecionada:</span>
-          <img [src]="selectedImage" alt="Preview" width="100">
-        </div>
+        <img *ngIf="selectedImage" [src]="selectedImage" alt="Preview">
     </div>
     <button type="submit">Criar celebração</button>
 </form>

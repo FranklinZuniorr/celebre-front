@@ -9,6 +9,7 @@
     color: white;
     font-weight: 800;
     cursor: pointer;
+    @content;
 }
 
 .formNewCelebration {
@@ -40,8 +41,9 @@
     }
 
     button[type="submit"] {
-        @include buttonCustom();
-        background-color: vars.$white;
-        color: vars.$black;
+        @include buttonCustom() {
+            background-color: vars.$white;
+            color: vars.$black;
+        }
     }
 }

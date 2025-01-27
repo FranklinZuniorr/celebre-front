@@ -30,9 +30,23 @@ html {
     font-style: normal;
 }
 
+@font-face {
+  font-family: 'Anton-regular';
+  src: url('assets/fonts/Anton-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
-    margin: 0;
-    background-color: vars.$black;
-    font-family: 'ConcertOne-regular';
+  margin: 0;
+  background-color: vars.$black;
+  background-image: url('./assets/images/tile_bg.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-family: 'Anton-regular';
+  padding-left: 1rem;
+  padding-right: 1rem;
+  color: vars.$white;
 }
 html, body { height: 100%; }

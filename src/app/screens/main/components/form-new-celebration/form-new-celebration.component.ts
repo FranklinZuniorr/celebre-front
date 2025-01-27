@@ -27,6 +27,11 @@ export class FormNewCelebrationComponent {
     });
   }
 
+  triggerFileInput(): void {
+    const fileInput = document.getElementById('fileUpload') as HTMLInputElement;
+    fileInput.click();
+  }
+
   onFileSelected(event: any): void {
     const file = event.target.files[0];
     
@@ -108,7 +113,7 @@ export class FormNewCelebrationComponent {
     const control = this.myForm.get('endPhrase');
   
     if (control?.hasError('required')) {
-      return 'O frase final de destaque é obrigatória!';
+      return 'A frase final de destaque é obrigatória!';
     }
   
     if (control?.hasError('minlength')) {

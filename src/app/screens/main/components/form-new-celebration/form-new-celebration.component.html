@@ -1,15 +1,21 @@
 <form class="formNewCelebration" [formGroup]="myForm" (ngSubmit)="onSubmit()">
-    <mat-form-field class="formNewCelebration_input">
-        <mat-label>Título da celebração:</mat-label>
-        <input 
-        matInput 
-        placeholder="Título da celebração"
-        formControlName="celebrationTitle"
-        >
-        <mat-error *ngIf="myForm.get('celebrationTitle')?.invalid">
-            {{ getErrorMessageCelebrationTitleField() }}
-        </mat-error>
-    </mat-form-field>
+    <div>
+        <mat-form-field class="formNewCelebration_input">
+            <mat-label>Título da celebração:</mat-label>
+            <input 
+            matInput 
+            placeholder="Título da celebração"
+            formControlName="celebrationTitle"
+            >
+            <mat-error *ngIf="myForm.get('celebrationTitle')?.invalid">
+                {{ getErrorMessageCelebrationTitleField() }}
+            </mat-error>
+            <app-options-generic-suggestions 
+            [options]="['Feliz Natal', 'Feliz Ano Novo', 'Feliz São João', 'Feliz Dia dos Namorados', 'Feliz Páscoa', 'Feliz Dia das Crianças', 'Feliz Dia dos Pais', 'Feliz Dia das Mães', 'Feliz Carnaval', 'Feliz Dia do Amigo']" 
+            [onSelect]="handleSetSuggestionCelebrationTitle" 
+            />
+        </mat-form-field>
+    </div>
     <mat-form-field class="formNewCelebration_input">
         <mat-label>Nome da pessoa:</mat-label>
         <input 

@@ -19,6 +19,10 @@
 
     &_input {
         width: 100% !important;
+
+        &__error {
+            background-color: red !important;
+        }
     }
 
     &_imageSelectArea {

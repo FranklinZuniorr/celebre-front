@@ -1,12 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { OptionsGenericSuggestionsComponent } from '../../../../components/options-generic-suggestions/options-generic-suggestions.component';
 
 @Component({
   selector: 'app-form-new-celebration',
-  imports: [ReactiveFormsModule, MatFormFieldModule, MatInputModule, CommonModule],
+  imports: [ReactiveFormsModule, MatFormFieldModule, MatInputModule, CommonModule, OptionsGenericSuggestionsComponent],
   templateUrl: './form-new-celebration.component.html',
   styleUrl: './form-new-celebration.component.scss',
 })
@@ -25,6 +26,12 @@ export class FormNewCelebrationComponent {
       imageLink: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]]
     });
+
+    this.handleSetSuggestionCelebrationTitle = this.handleSetSuggestionCelebrationTitle.bind(this);
+  }
+
+  handleSetSuggestionCelebrationTitle(value: string) {
+    this.myForm.patchValue({ celebrationTitle: value });
   }
 
   triggerFileInput(): void {
@@ -40,7 +47,6 @@ export class FormNewCelebrationComponent {
       reader.onload = () => {
         this.selectedImage = reader.result;
         this.myForm.patchValue({ imageLink: reader.result as string });
-        console.log(this.myForm.get('imageLink'))
       };
       reader.readAsDataURL(file);
     }

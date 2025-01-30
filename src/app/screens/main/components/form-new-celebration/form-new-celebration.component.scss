@@ -48,6 +48,7 @@
         @include buttonCustom() {
             background-color: vars.$white;
             color: vars.$black;
+            height: 3rem;
         }
     }
 }

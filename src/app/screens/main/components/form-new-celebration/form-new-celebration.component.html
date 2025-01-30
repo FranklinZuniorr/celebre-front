@@ -1,21 +1,4 @@
 <form class="formNewCelebration" [formGroup]="myForm" (ngSubmit)="onSubmit()">
-    <div>
-        <mat-form-field class="formNewCelebration_input">
-            <mat-label>Título da celebração:</mat-label>
-            <input 
-            matInput 
-            placeholder="Título da celebração"
-            formControlName="celebrationTitle"
-            >
-            <mat-error *ngIf="myForm.get('celebrationTitle')?.invalid">
-                {{ getErrorMessageCelebrationTitleField() }}
-            </mat-error>
-            <app-options-generic-suggestions 
-            [options]="['Feliz Natal', 'Feliz Ano Novo', 'Feliz São João', 'Feliz Dia dos Namorados', 'Feliz Páscoa', 'Feliz Dia das Crianças', 'Feliz Dia dos Pais', 'Feliz Dia das Mães', 'Feliz Carnaval', 'Feliz Dia do Amigo']" 
-            [onSelect]="handleSetSuggestionCelebrationTitle" 
-            />
-        </mat-form-field>
-    </div>
     <mat-form-field class="formNewCelebration_input">
         <mat-label>Nome da pessoa:</mat-label>
         <input 
@@ -28,6 +11,21 @@
         </mat-error>
     </mat-form-field>
     <mat-form-field class="formNewCelebration_input">
+        <mat-label>Título da celebração:</mat-label>
+        <input 
+        matInput 
+        placeholder="Título da celebração"
+        formControlName="celebrationTitle"
+        >
+        <mat-error *ngIf="myForm.get('celebrationTitle')?.invalid">
+            {{ getErrorMessageCelebrationTitleField() }}
+        </mat-error>
+        <app-options-generic-suggestions 
+        [options]="['Feliz Natal', 'Feliz Ano Novo', 'Feliz São João', 'Feliz Dia dos Namorados', 'Feliz Páscoa', 'Feliz Dia das Crianças', 'Feliz Dia dos Pais', 'Feliz Dia das Mães', 'Feliz Carnaval', 'Feliz Dia do Amigo']" 
+        [onSelect]="handleSetSuggestionCelebrationTitle" 
+        />
+    </mat-form-field>
+    <mat-form-field class="formNewCelebration_input">
         <mat-label>Mensagem especial:</mat-label>
         <input 
         matInput 
@@ -37,6 +35,10 @@
         <mat-error *ngIf="myForm.get('description')?.invalid">
             {{ getErrorMessageDescriptionField() }}
         </mat-error>
+        <app-options-generic-suggestions 
+        [options]="deepSpecialMessages" 
+        [onSelect]="handleSetSuggestionDescription" 
+        />
     </mat-form-field>
     <mat-form-field class="formNewCelebration_input">
         <mat-label>Vídeo do YouTube:</mat-label>
@@ -48,6 +50,10 @@
         <mat-error *ngIf="myForm.get('youtubeUrl')?.invalid">
             {{ getErrorMessageYoutubeUrlField() }}
         </mat-error>
+        <app-options-generic-suggestions-advanced 
+        [options]="musicVideos" 
+        [onSelect]="handleSetSuggestionYoutubeUrl" 
+        />
     </mat-form-field>
     <mat-form-field class="formNewCelebration_input">
         <mat-label>Frase de destaque final:</mat-label>
@@ -59,10 +65,26 @@
         <mat-error *ngIf="myForm.get('endPhrase')?.invalid">
             {{ getErrorMessageEndPhraseField() }}
         </mat-error>
+        <app-options-generic-suggestions 
+        [options]="celebrationEndPhrases" 
+        [onSelect]="handleSetSuggestionEndPhrase" 
+        />
+    </mat-form-field>
+    <mat-form-field class="formNewCelebration_input">
+        <mat-label>Email:</mat-label>
+        <input 
+        matInput 
+        placeholder="celebre@email.com"
+        formControlName="email"
+        >
+        <mat-error *ngIf="myForm.get('email')?.invalid">
+            {{ getErrorMessageEmailField() }}
+        </mat-error>
     </mat-form-field>
     <div class="formNewCelebration_imageSelectArea">
         <button type="button" (click)="triggerFileInput()">Selecionar Imagem</button>
         <input id="fileUpload" type="file" (change)="onFileSelected($event)" accept="image/*" hidden>
+        <span *ngIf="myForm.get('imageLink')?.invalid && isTrySubmitForm">auau</span>
         <img *ngIf="selectedImage" [src]="selectedImage" alt="Preview">
     </div>
     <button type="submit">Criar celebração</button>

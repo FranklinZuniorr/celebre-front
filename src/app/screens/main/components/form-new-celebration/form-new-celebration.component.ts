@@ -7,6 +7,7 @@ import { OptionsGenericSuggestionsComponent } from '../../../../components/optio
 import { OptionsGenericSuggestionsAdvancedComponent } from '../../../../components/options-generic-suggestions-advanced/options-generic-suggestions-advanced.component';
 import { Option } from '../../../../types';
 import {MatIconModule} from '@angular/material/icon';
+import { CheckoutService } from '../../../../api/checkout.service';
 
 @Component({
   selector: 'app-form-new-celebration',
@@ -17,7 +18,7 @@ import {MatIconModule} from '@angular/material/icon';
     CommonModule, 
     OptionsGenericSuggestionsComponent,
     OptionsGenericSuggestionsAdvancedComponent,
-    MatIconModule
+    MatIconModule,
   ],
   templateUrl: './form-new-celebration.component.html',
   styleUrl: './form-new-celebration.component.scss',
@@ -64,7 +65,7 @@ export class FormNewCelebrationComponent {
     "Você é uma faísca única no universo, e sua existência faz toda a diferença."
   ];
   
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private checkoutService: CheckoutService) {
     this.myForm = this.formBuilder.group({
       celebrationTitle: ['', [Validators.required, Validators.minLength(5)]],
       personName: ['', [Validators.required, Validators.minLength(3)]],
@@ -120,7 +121,7 @@ export class FormNewCelebrationComponent {
     if (this.myForm.valid) {
       this.isTrySubmitForm = false;
       this.submitted = true;
-      console.log(this.myForm.value);
+      this.checkoutService.createNewCelebration(this.myForm.value).subscribe();
     }
   }
 

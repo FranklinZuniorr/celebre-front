@@ -6,6 +6,7 @@ import { MatInputModule } from '@angular/material/input';
 import { OptionsGenericSuggestionsComponent } from '../../../../components/options-generic-suggestions/options-generic-suggestions.component';
 import { OptionsGenericSuggestionsAdvancedComponent } from '../../../../components/options-generic-suggestions-advanced/options-generic-suggestions-advanced.component';
 import { Option } from '../../../../types';
+import {MatIconModule} from '@angular/material/icon';
 
 @Component({
   selector: 'app-form-new-celebration',
@@ -15,7 +16,8 @@ import { Option } from '../../../../types';
     MatInputModule, 
     CommonModule, 
     OptionsGenericSuggestionsComponent,
-    OptionsGenericSuggestionsAdvancedComponent
+    OptionsGenericSuggestionsAdvancedComponent,
+    MatIconModule
   ],
   templateUrl: './form-new-celebration.component.html',
   styleUrl: './form-new-celebration.component.scss',

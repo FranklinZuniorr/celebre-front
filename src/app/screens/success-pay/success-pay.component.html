@@ -1,0 +1,22 @@
+<div class="successPay">
+    <img class="successPay_icon" src="assets/images/gift-box.svg" />
+
+    <div class="successPay_content">
+        <div class="successPay_content_congratulationsTexts">
+            <div class="successPay_content_congratulationsTexts_title">
+                <app-delay-digitation [text]="'Celebração gerada com sucesso!'" [delay]="70" />
+            </div>
+            <div class="successPay_content_congratulationsTexts_additionalInfo">
+                Enviamos um e-mail para você com todos os detalhes e o link de acesso à Celebração.
+            </div>
+        </div>
+        <div class="successPay_content_actions">
+            <div class="successPay_content_actions_item">
+                <button (click)="handleOnClickNavigateToMainPage()">Tela inicial</button>
+            </div>
+            <div class="successPay_content_actions_item">
+                <button (click)="openEmail()">Abrir email</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,90 @@
+@use '../../../vars.scss' as vars;
+
+.successPay {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+    height: fit-content;
+    padding-top: 2rem;
+
+    &_icon {
+        width: 5rem;
+        height: 5rem;
+        animation: entrance 1s ease 0s 1 normal forwards;
+
+        @keyframes entrance {
+            0% {
+                opacity: 0;
+                transform: translateY(-250px);
+            }
+        
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    }
+
+    &_content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+        width: 100%;
+        height: fit-content;
+
+        &_congratulationsTexts {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            text-align: center;
+            padding-left: 1rem;
+            padding-right: 1rem;
+            
+            &_title {
+                font-size: 2rem;
+    
+                @media only screen and (max-width: 600px) {
+                    font-size: 1.5rem;
+                }
+            }
+    
+            &_additionalInfo {
+                font-size: 0.875rem;
+            }
+        }
+    
+        &_actions {
+            width: 30rem;
+            display: grid;
+            grid-template-columns: repeat(2, minmax(200px, 200px));
+            justify-content: center;
+            gap: 1rem;
+    
+            @media only screen and (max-width: 600px) {
+                width: 100%;
+                grid-template-columns: repeat(1, minmax(100%, 100%));
+            }
+    
+            &_item {
+                width: 100%;
+                height: 2rem;
+                box-sizing: border-box;
+                padding: 0;
+                
+                @media only screen and (max-width: 600px) {
+                    padding-left: 1rem;
+                    padding-right: 1rem;
+                }
+    
+                button {
+                    @include vars.buttonCustom {}
+                }
+            }
+        }
+    }
+
+}

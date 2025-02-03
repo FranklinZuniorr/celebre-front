@@ -37,9 +37,16 @@ html {
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'LexendGiga-Variable';
+  src: url('assets/fonts/LexendGiga-VariableFont.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
   margin: 0;
-  font-family: 'Anton-regular';
+  font-family: 'LexendGiga-Variable';
   color: vars.$white;
 }
 html, body { height: 100%; }
@@ -51,4 +58,8 @@ html, body { height: 100%; }
   background-attachment: fixed;
   background-position: center;
   background-repeat: repeat;
+}
+
+.successPay {
+  background-color: vars.$black;
 }

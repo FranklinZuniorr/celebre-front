@@ -1,4 +1,5 @@
 @use '../../../../../vars.scss' as vars;
+@use '@angular/material' as mat;
 
 @mixin buttonCustom {
     width: 100%;
@@ -51,9 +52,16 @@
 
     button[type="submit"] {
         @include buttonCustom() {
+            display: flex;
+            justify-content: center;
+            align-items: center;
             background-color: vars.$white;
             color: vars.$black;
             height: 3rem;
         }
     }
+
+    @include mat.progress-spinner-overrides((
+        active-indicator-color: orange,
+    ));
 }

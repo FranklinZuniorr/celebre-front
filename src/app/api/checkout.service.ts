@@ -28,7 +28,6 @@ export class CheckoutService {
   constructor(private http: HttpClient) {}
 
   createNewCelebration(params: CreateNewCelebrationParams): Observable<CreateNewCelebrationReturn> {
-    console.log(params)
     let httpParams = new HttpParams();
     
     Object.keys(params).forEach(key => {

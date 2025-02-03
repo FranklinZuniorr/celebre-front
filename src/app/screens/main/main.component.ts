@@ -1,7 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit, Renderer2 } from '@angular/core';
 import { FormNewCelebrationComponent } from './components/form-new-celebration/form-new-celebration.component';
 import { DelayDigitationComponent } from '../../components/delay-digitation/delay-digitation.component';
-import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-main',
@@ -9,10 +8,14 @@ import { environment } from '../../../environments/environment';
   templateUrl: './main.component.html',
   styleUrl: './main.component.scss'
 })
-export class MainComponent {
-  teste: string = environment.apiUrl;
+export class MainComponent implements OnInit, OnDestroy {
+  constructor(private renderer: Renderer2) {}
 
-  constructor() {
-    console.log(this.teste);
+  ngOnInit() {
+    this.renderer.addClass(document.body, 'appMain');
+  }
+
+  ngOnDestroy() {
+    this.renderer.removeClass(document.body, 'appMain');
   }
 }

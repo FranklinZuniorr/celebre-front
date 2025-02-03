@@ -8,6 +8,7 @@ import { OptionsGenericSuggestionsAdvancedComponent } from '../../../../componen
 import { Option } from '../../../../types';
 import {MatIconModule} from '@angular/material/icon';
 import { CheckoutService } from '../../../../api/checkout.service';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-form-new-celebration',
@@ -19,6 +20,7 @@ import { CheckoutService } from '../../../../api/checkout.service';
     OptionsGenericSuggestionsComponent,
     OptionsGenericSuggestionsAdvancedComponent,
     MatIconModule,
+    MatProgressSpinnerModule
   ],
   templateUrl: './form-new-celebration.component.html',
   styleUrl: './form-new-celebration.component.scss',
@@ -28,6 +30,7 @@ export class FormNewCelebrationComponent {
   submitted = false;
   isTrySubmitForm = false;
   selectedImage: string | ArrayBuffer | null = null;
+  isLoadingSubmittingForm: boolean = false;
   celebrationEndPhrases: string[] = [
     "Que esta celebração fique para sempre em sua memória!",
     "Comemore hoje e guarde essa alegria para sempre!",
@@ -116,12 +119,26 @@ export class FormNewCelebrationComponent {
     }
   }
 
+  openPaymentLink(link: string) {
+    this.isLoadingSubmittingForm = false;
+    window.open(link, 'self');
+  }
+
   onSubmit() {
+    if (this.isLoadingSubmittingForm) return;
     this.isTrySubmitForm = true;
     if (this.myForm.valid) {
+      this.isLoadingSubmittingForm = true;
       this.isTrySubmitForm = false;
       this.submitted = true;
-      this.checkoutService.createNewCelebration(this.myForm.value).subscribe();
+      this.checkoutService.createNewCelebration(this.myForm.value)
+      .subscribe({
+        next: (value) => this.openPaymentLink(value.url),
+        error: (error) => {
+          this.isLoadingSubmittingForm = false;
+          alert('Erro ao processar o pagamento.');
+        }
+      });
     }
   }
 

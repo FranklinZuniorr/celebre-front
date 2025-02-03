@@ -92,5 +92,8 @@
         </span>
         <img *ngIf="selectedImage" [src]="selectedImage" alt="Preview">
     </div>
-    <button type="submit">Criar celebração</button>
+    <button type="submit">
+        <mat-spinner *ngIf="isLoadingSubmittingForm" [diameter]="30"></mat-spinner>
+        <span *ngIf="!isLoadingSubmittingForm">Criar celebração</span>
+    </button>
 </form>

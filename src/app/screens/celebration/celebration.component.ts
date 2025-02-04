@@ -5,14 +5,16 @@ import { ActivatedRoute } from '@angular/router';
 import { NgIf } from '@angular/common';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { PresentationComponent } from './components/presentation/presentation.component';
 
 @Component({
   selector: 'app-celebration',
-  imports: [NgIf, MatProgressSpinnerModule],
+  imports: [NgIf, MatProgressSpinnerModule, PresentationComponent],
   templateUrl: './celebration.component.html',
   styleUrl: './celebration.component.scss'
 })
 export class CelebrationComponent implements OnInit, OnDestroy {
+  ENUM_CELEBRATION_STEPS = ENUM_CELEBRATION_STEPS;
   currentScreen: ENUM_CELEBRATION_STEPS = ENUM_CELEBRATION_STEPS.PRESENTATION;
   celebrationData: Omit<CelebrationExternal, 'youtubeUrl'> & { youtubeUrl: SafeResourceUrl } | undefined;
   isLoadingOnStart: boolean = true;

@@ -3,5 +3,6 @@
 </div>
 
 <div *ngIf="!isLoadingOnStart" class="celebration">
+    <app-presentation *ngIf="currentScreen === ENUM_CELEBRATION_STEPS.PRESENTATION" />
 </div>
 

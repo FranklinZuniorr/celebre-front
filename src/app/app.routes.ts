@@ -6,5 +6,5 @@ import { CelebrationComponent } from './screens/celebration/celebration.componen
 export const routes: Routes = [
     { path: '', component: MainComponent },
     { path: 'sucesso', component: SuccessPayComponent },
-    { path: 'celebration/:id', component: CelebrationComponent }
+    { path: 'celebracao/:id', component: CelebrationComponent }
 ];

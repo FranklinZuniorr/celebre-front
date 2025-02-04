@@ -1,0 +1,20 @@
+@use '@angular/material' as mat;
+
+.celebration {
+    width: 100%;
+    height: 100%;
+    background-color: rgb(18, 61, 18);
+}
+
+.celebrationIsLoadingOnStart {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+
+    @include mat.progress-spinner-overrides((
+        active-indicator-color: orange,
+    ));
+}

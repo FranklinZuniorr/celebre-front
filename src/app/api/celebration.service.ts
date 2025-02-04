@@ -3,7 +3,7 @@ import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
-interface GetByIdReturn {
+export interface CelebrationExternal {
   celebrationTitle: string;
   personName: string;
   description: string;
@@ -13,17 +13,21 @@ interface GetByIdReturn {
   email: string;
 }
 
+export interface CelebrationGetByIdReturn {
+  celebration: CelebrationExternal;
+}
+
 @Injectable({
   providedIn: 'root'
 })
 export class CelebrationService {
   constructor(private http: HttpClient) {}
   
-  getById(celebrationId: string): Observable<GetByIdReturn>  {
+  getById(celebrationId: string): Observable<CelebrationGetByIdReturn>  {
     const apiUrl: string = `${environment.apiUrl}/celebration/product-base/${celebrationId}`;
   
-    const response: Observable<GetByIdReturn> = 
-      this.http.get<GetByIdReturn>(apiUrl);
+    const response: Observable<CelebrationGetByIdReturn> = 
+      this.http.get<CelebrationGetByIdReturn>(apiUrl);
     
     return response;
   }

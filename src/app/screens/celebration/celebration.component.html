@@ -1,0 +1,7 @@
+<div *ngIf="isLoadingOnStart" class="celebrationIsLoadingOnStart">
+    <mat-spinner [diameter]="30"></mat-spinner>
+</div>
+
+<div *ngIf="!isLoadingOnStart" class="celebration">
+</div>
+

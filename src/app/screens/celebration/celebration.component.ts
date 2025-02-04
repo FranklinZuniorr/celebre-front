@@ -6,10 +6,11 @@ import { NgIf } from '@angular/common';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { PresentationComponent } from './components/presentation/presentation.component';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-celebration',
-  imports: [NgIf, MatProgressSpinnerModule, PresentationComponent],
+  imports: [NgIf, MatProgressSpinnerModule, PresentationComponent, MatIconModule],
   templateUrl: './celebration.component.html',
   styleUrl: './celebration.component.scss'
 })
@@ -45,6 +46,38 @@ export class CelebrationComponent implements OnInit, OnDestroy {
     const celebrationID = this.router.snapshot.paramMap.get("id") || undefined;
     if (!celebrationID) return;
     this.getCelebrationById(celebrationID);
+  }
+
+  handleScreenNext() {
+    switch (this.currentScreen) {
+      case ENUM_CELEBRATION_STEPS.PRESENTATION:
+        this.currentScreen = ENUM_CELEBRATION_STEPS.WINNER_INFO;
+        break;
+      case ENUM_CELEBRATION_STEPS.WINNER_INFO:
+        this.currentScreen = ENUM_CELEBRATION_STEPS.SPECIAL_MESSAGE_WITH_TITLE;
+        break;
+      case ENUM_CELEBRATION_STEPS.SPECIAL_MESSAGE_WITH_TITLE:
+        this.currentScreen = ENUM_CELEBRATION_STEPS.END
+        break;
+      default:
+        break;
+    }
+  }
+
+  handleScreenBack() {
+    switch (this.currentScreen) {
+      case ENUM_CELEBRATION_STEPS.END:
+        this.currentScreen = ENUM_CELEBRATION_STEPS.SPECIAL_MESSAGE_WITH_TITLE
+        break;
+      case ENUM_CELEBRATION_STEPS.SPECIAL_MESSAGE_WITH_TITLE:
+        this.currentScreen = ENUM_CELEBRATION_STEPS.WINNER_INFO
+        break;
+      case ENUM_CELEBRATION_STEPS.WINNER_INFO:
+        this.currentScreen = ENUM_CELEBRATION_STEPS.PRESENTATION
+        break;
+      default:
+        break;
+    }
   }
 
   ngOnInit() {

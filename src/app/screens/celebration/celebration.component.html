@@ -3,6 +3,14 @@
 </div>
 
 <div *ngIf="!isLoadingOnStart" class="celebration">
+    <div class="celebration_controls">
+        <button (click)="handleScreenBack()">
+            <mat-icon aria-hidden="false" fontIcon="chevron_left"></mat-icon>
+        </button>
+        <button (click)="handleScreenNext()">
+            <mat-icon aria-hidden="false" fontIcon="chevron_right"></mat-icon>
+        </button>
+    </div>
     <app-presentation *ngIf="currentScreen === ENUM_CELEBRATION_STEPS.PRESENTATION" />
 </div>
 

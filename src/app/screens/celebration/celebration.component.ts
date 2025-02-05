@@ -2,13 +2,14 @@ import { Component, OnDestroy, OnInit, Renderer2 } from '@angular/core';
 import { ENUM_CELEBRATION_STEPS } from './constants';
 import { CelebrationExternal, CelebrationService } from '../../api/celebration.service';
 import { ActivatedRoute } from '@angular/router';
-import { NgIf } from '@angular/common';
+import { NgIf, NgStyle } from '@angular/common';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { PresentationComponent } from './components/presentation/presentation.component';
 import { MatIconModule } from '@angular/material/icon';
 import { WinnerInfoComponent } from './components/winner-info/winner-info.component';
 import { SpecialMessageComponent } from './components/special-message/special-message.component';
+import { EndComponent } from './components/end/end.component';
 
 @Component({
   selector: 'app-celebration',
@@ -18,7 +19,9 @@ import { SpecialMessageComponent } from './components/special-message/special-me
     PresentationComponent, 
     MatIconModule, 
     WinnerInfoComponent,
-    SpecialMessageComponent
+    SpecialMessageComponent,
+    EndComponent,
+    NgStyle
   ],
   templateUrl: './celebration.component.html',
   styleUrl: './celebration.component.scss'

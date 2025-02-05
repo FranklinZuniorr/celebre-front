@@ -4,10 +4,16 @@
 
 <div *ngIf="!isLoadingOnStart" class="celebration">
     <div class="celebration_controls">
-        <button (click)="handleScreenBack()">
+        <button 
+        (click)="handleScreenBack()"
+        [ngStyle]="{ 'opacity': currentScreen === ENUM_CELEBRATION_STEPS.PRESENTATION ? '0.5' : '1' }"
+        >
             <mat-icon aria-hidden="false" fontIcon="chevron_left"></mat-icon>
         </button>
-        <button (click)="handleScreenNext()">
+        <button 
+        (click)="handleScreenNext()" 
+        [ngStyle]="{ 'opacity': currentScreen === ENUM_CELEBRATION_STEPS.END ? '0.5' : '1' }"
+        >
             <mat-icon aria-hidden="false" fontIcon="chevron_right"></mat-icon>
         </button>
     </div>
@@ -20,6 +26,12 @@
     <app-special-message 
     *ngIf="currentScreen === ENUM_CELEBRATION_STEPS.SPECIAL_MESSAGE_WITH_TITLE" 
     [message]="celebrationData?.description || '-'"
+    />
+    <app-end 
+    *ngIf="currentScreen === ENUM_CELEBRATION_STEPS.END" 
+    [title]="celebrationData?.celebrationTitle || '-'"
+    [endPhrase]="celebrationData?.endPhrase || '-'"
+    [youtubeUrl]="celebrationData?.youtubeUrl || ''"
     />
 </div>
 

@@ -10,6 +10,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { WinnerInfoComponent } from './components/winner-info/winner-info.component';
 import { SpecialMessageComponent } from './components/special-message/special-message.component';
 import { EndComponent } from './components/end/end.component';
+import { GiftComponent } from './components/gift/gift.component';
 
 @Component({
   selector: 'app-celebration',
@@ -21,7 +22,8 @@ import { EndComponent } from './components/end/end.component';
     WinnerInfoComponent,
     SpecialMessageComponent,
     EndComponent,
-    NgStyle
+    NgStyle,
+    GiftComponent
   ],
   templateUrl: './celebration.component.html',
   styleUrl: './celebration.component.scss'
@@ -60,9 +62,13 @@ export class CelebrationComponent implements OnInit, OnDestroy {
     this.getCelebrationById(celebrationID);
   }
 
-  handleScreenNext() {
-    switch (this.currentScreen) {
+  handleScreenNext(screen?: ENUM_CELEBRATION_STEPS) {
+    const currentScreen = screen || this.currentScreen;
+    switch (currentScreen) {
       case ENUM_CELEBRATION_STEPS.PRESENTATION:
+        this.currentScreen = ENUM_CELEBRATION_STEPS.GIFT;
+        break;
+      case ENUM_CELEBRATION_STEPS.GIFT:
         this.currentScreen = ENUM_CELEBRATION_STEPS.WINNER_INFO;
         break;
       case ENUM_CELEBRATION_STEPS.WINNER_INFO:

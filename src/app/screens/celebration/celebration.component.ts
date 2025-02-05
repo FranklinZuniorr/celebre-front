@@ -8,10 +8,18 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { PresentationComponent } from './components/presentation/presentation.component';
 import { MatIconModule } from '@angular/material/icon';
 import { WinnerInfoComponent } from './components/winner-info/winner-info.component';
+import { SpecialMessageComponent } from './components/special-message/special-message.component';
 
 @Component({
   selector: 'app-celebration',
-  imports: [NgIf, MatProgressSpinnerModule, PresentationComponent, MatIconModule, WinnerInfoComponent],
+  imports: [
+    NgIf, 
+    MatProgressSpinnerModule, 
+    PresentationComponent, 
+    MatIconModule, 
+    WinnerInfoComponent,
+    SpecialMessageComponent
+  ],
   templateUrl: './celebration.component.html',
   styleUrl: './celebration.component.scss'
 })

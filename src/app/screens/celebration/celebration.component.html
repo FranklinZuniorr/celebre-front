@@ -17,5 +17,9 @@
     [username]="celebrationData?.personName || '-'"
     [photo]="celebrationData?.imageLink || ''"
     />
+    <app-special-message 
+    *ngIf="currentScreen === ENUM_CELEBRATION_STEPS.SPECIAL_MESSAGE_WITH_TITLE" 
+    [message]="celebrationData?.description || '-'"
+    />
 </div>
 

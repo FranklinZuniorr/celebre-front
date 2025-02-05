@@ -7,10 +7,11 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { PresentationComponent } from './components/presentation/presentation.component';
 import { MatIconModule } from '@angular/material/icon';
+import { WinnerInfoComponent } from './components/winner-info/winner-info.component';
 
 @Component({
   selector: 'app-celebration',
-  imports: [NgIf, MatProgressSpinnerModule, PresentationComponent, MatIconModule],
+  imports: [NgIf, MatProgressSpinnerModule, PresentationComponent, MatIconModule, WinnerInfoComponent],
   templateUrl: './celebration.component.html',
   styleUrl: './celebration.component.scss'
 })

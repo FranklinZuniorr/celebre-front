@@ -12,5 +12,10 @@
         </button>
     </div>
     <app-presentation *ngIf="currentScreen === ENUM_CELEBRATION_STEPS.PRESENTATION" />
+    <app-winner-info 
+    *ngIf="currentScreen === ENUM_CELEBRATION_STEPS.WINNER_INFO" 
+    [username]="celebrationData?.personName || '-'"
+    [photo]="celebrationData?.imageLink || ''"
+    />
 </div>
 

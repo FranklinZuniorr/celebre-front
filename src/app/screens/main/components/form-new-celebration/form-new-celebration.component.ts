@@ -72,9 +72,9 @@ export class FormNewCelebrationComponent {
     this.myForm = this.formBuilder.group({
       celebrationTitle: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(50)]],
       personName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
-      description: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(100)]],
+      description: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(200)]],
       youtubeUrl: ['', [Validators.required, Validators.pattern("^(https?://)?(www\\.)?(youtube\\.com|youtu\\.be)/.+$")]],
-      endPhrase: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(100)]],
+      endPhrase: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(200)]],
       imageLink: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]]
     });
@@ -191,7 +191,7 @@ export class FormNewCelebrationComponent {
     }
 
     if (control?.hasError('maxlength')) {
-      return `Insira no máximo 100 letras!`;
+      return `Insira no máximo 200 letras!`;
     }
   
     return '';
@@ -223,7 +223,7 @@ export class FormNewCelebrationComponent {
     }
 
     if (control?.hasError('maxlength')) {
-      return `Insira no máximo 100 letras!`;
+      return `Insira no máximo 200 letras!`;
     }
   
     return '';

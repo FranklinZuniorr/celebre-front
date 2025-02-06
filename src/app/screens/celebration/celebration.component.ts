@@ -50,7 +50,7 @@ export class CelebrationComponent implements OnInit, OnDestroy {
         next: (value) => {
           this.celebrationData = value.celebration;
           this.celebrationData.youtubeUrl = 
-          this.sanitizer.bypassSecurityTrustResourceUrl(value.celebration.youtubeUrl.replace('watch?v=', 'embed/') + '?&autoplay=1');
+          this.sanitizer.bypassSecurityTrustResourceUrl(value.celebration.youtubeUrl.replace('watch?v=', 'embed/') + '?&autoplay=0');
           this.isLoadingOnStart = false;
         },
         error: (error) => {

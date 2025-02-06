@@ -79,7 +79,8 @@
             width: 5rem;
             height: 5rem;
             cursor: pointer;
-            animation: balloonAnim 2s ease 0s infinite normal forwards, balloonAttention 2s ease 2s infinite normal forwards;
+            animation: balloonEntrance 2s ease 0s 1 normal forwards, 
+            balloonAnim 2s ease 2s infinite normal forwards, balloonAttention 2s ease 4s infinite normal forwards;
 
             &.exit {
                 animation: exitBalloon 1s ease 0s 1 normal forwards;
@@ -94,6 +95,16 @@
                         opacity: 0;
                         transform: rotate(-540deg) scale(10);
                     }
+                }
+            }
+
+            @keyframes balloonEntrance {
+                0% {
+                    transform: translateY(calc(100vh + 10rem));
+                }
+            
+                100% {
+                    transform: translateY(0);
                 }
             }
 

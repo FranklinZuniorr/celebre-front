@@ -70,11 +70,11 @@ export class FormNewCelebrationComponent {
   
   constructor(private formBuilder: FormBuilder, private checkoutService: CheckoutService) {
     this.myForm = this.formBuilder.group({
-      celebrationTitle: ['', [Validators.required, Validators.minLength(5)]],
-      personName: ['', [Validators.required, Validators.minLength(3)]],
-      description: ['', [Validators.required, Validators.minLength(10)]],
+      celebrationTitle: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(50)]],
+      personName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
+      description: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(100)]],
       youtubeUrl: ['', [Validators.required, Validators.pattern("^(https?://)?(www\\.)?(youtube\\.com|youtu\\.be)/.+$")]],
-      endPhrase: ['', [Validators.required, Validators.minLength(5)]],
+      endPhrase: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(50)]],
       imageLink: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]]
     });
@@ -152,6 +152,10 @@ export class FormNewCelebrationComponent {
     if (control?.hasError('minlength')) {
       return `O título da celebração deve ter ao menos 5 letras!`;
     }
+
+    if (control?.hasError('maxlength')) {
+      return `Insira no máximo 50 letras!`;
+    }
   
     return '';
   }  
@@ -166,6 +170,10 @@ export class FormNewCelebrationComponent {
     if (control?.hasError('minlength')) {
       return `O nome da pessoa deve ter ao menos 3 letras!`;
     }
+
+    if (control?.hasError('maxlength')) {
+      return `Insira no máximo 50 letras!`;
+    }
   
     return '';
   }  
@@ -179,6 +187,10 @@ export class FormNewCelebrationComponent {
   
     if (control?.hasError('minlength')) {
       return `A descrição deve ter ao menos 10 letras!`;
+    }
+
+    if (control?.hasError('maxlength')) {
+      return `Insira no máximo 100 letras!`;
     }
   
     return '';
@@ -207,6 +219,10 @@ export class FormNewCelebrationComponent {
   
     if (control?.hasError('minlength')) {
       return `A frase deve ter ao menos 5 letras!`;
+    }
+
+    if (control?.hasError('maxlength')) {
+      return `Insira no máximo 50 letras!`;
     }
   
     return '';

@@ -26,14 +26,15 @@ export class CheckoutService {
 
   createNewCelebration(params: CreateNewCelebrationParams): Observable<CreateNewCelebrationReturn> {
     const apiUrl: string = `${environment.apiUrl}/payment/checkout-product-base`;
-    let httpParams = new HttpParams();
+    
+    /* let httpParams = new HttpParams();
     
     Object.keys(params).forEach(key => {
       httpParams = httpParams.set(key, params[key]);
-    });
+    }); */
   
     const response: Observable<CreateNewCelebrationReturn> = 
-      this.http.get<CreateNewCelebrationReturn>(apiUrl, { params: httpParams });
+      this.http.post<CreateNewCelebrationReturn>(apiUrl, params);
     
     return response;
   }

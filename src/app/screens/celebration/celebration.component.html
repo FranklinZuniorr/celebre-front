@@ -11,6 +11,11 @@
             <mat-icon aria-hidden="false" fontIcon="chevron_left"></mat-icon>
         </button>
         <button 
+        (click)="handleNavigateToHome()"
+        >
+            <mat-icon aria-hidden="false" fontIcon="attach_money"></mat-icon>
+        </button>
+        <button 
         (click)="handleScreenNext()" 
         [ngStyle]="{ 'opacity': currentScreen === ENUM_CELEBRATION_STEPS.END ? '0.5' : '1' }"
         >

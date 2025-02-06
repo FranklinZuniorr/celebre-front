@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit, Renderer2 } from '@angular/core';
 import { ENUM_CELEBRATION_STEPS } from './constants';
 import { CelebrationExternal, CelebrationService } from '../../api/celebration.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgIf, NgStyle } from '@angular/common';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
@@ -39,6 +39,7 @@ export class CelebrationComponent implements OnInit, OnDestroy {
   constructor(
     private renderer: Renderer2, 
     private router: ActivatedRoute,
+    private navigation: Router,
     private celebrationService: CelebrationService,
     private sanitizer: DomSanitizer
   ) {}
@@ -62,6 +63,10 @@ export class CelebrationComponent implements OnInit, OnDestroy {
     const celebrationID = this.router.snapshot.paramMap.get("id") || undefined;
     if (!celebrationID) return;
     this.getCelebrationById(celebrationID);
+  }
+
+  handleNavigateToHome() {
+    this.navigation.navigate(['/']);
   }
 
   handleScreenNext(screen?: ENUM_CELEBRATION_STEPS) {

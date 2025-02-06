@@ -74,7 +74,7 @@ export class FormNewCelebrationComponent {
       personName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
       description: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(100)]],
       youtubeUrl: ['', [Validators.required, Validators.pattern("^(https?://)?(www\\.)?(youtube\\.com|youtu\\.be)/.+$")]],
-      endPhrase: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(50)]],
+      endPhrase: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(100)]],
       imageLink: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]]
     });
@@ -223,7 +223,7 @@ export class FormNewCelebrationComponent {
     }
 
     if (control?.hasError('maxlength')) {
-      return `Insira no máximo 50 letras!`;
+      return `Insira no máximo 100 letras!`;
     }
   
     return '';

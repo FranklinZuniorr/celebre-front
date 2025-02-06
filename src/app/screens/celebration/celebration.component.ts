@@ -11,6 +11,7 @@ import { WinnerInfoComponent } from './components/winner-info/winner-info.compon
 import { SpecialMessageComponent } from './components/special-message/special-message.component';
 import { EndComponent } from './components/end/end.component';
 import { GiftComponent } from './components/gift/gift.component';
+import { BalloonsComponent } from './components/balloons/balloons.component';
 
 @Component({
   selector: 'app-celebration',
@@ -23,7 +24,8 @@ import { GiftComponent } from './components/gift/gift.component';
     SpecialMessageComponent,
     EndComponent,
     NgStyle,
-    GiftComponent
+    GiftComponent,
+    BalloonsComponent
   ],
   templateUrl: './celebration.component.html',
   styleUrl: './celebration.component.scss'
@@ -75,7 +77,10 @@ export class CelebrationComponent implements OnInit, OnDestroy {
         this.currentScreen = ENUM_CELEBRATION_STEPS.SPECIAL_MESSAGE_WITH_TITLE;
         break;
       case ENUM_CELEBRATION_STEPS.SPECIAL_MESSAGE_WITH_TITLE:
-        this.currentScreen = ENUM_CELEBRATION_STEPS.END
+        this.currentScreen = ENUM_CELEBRATION_STEPS.BALLOONS;
+        break;
+      case ENUM_CELEBRATION_STEPS.BALLOONS:
+        this.currentScreen = ENUM_CELEBRATION_STEPS.END;
         break;
       default:
         break;
@@ -85,7 +90,10 @@ export class CelebrationComponent implements OnInit, OnDestroy {
   handleScreenBack() {
     switch (this.currentScreen) {
       case ENUM_CELEBRATION_STEPS.END:
-        this.currentScreen = ENUM_CELEBRATION_STEPS.SPECIAL_MESSAGE_WITH_TITLE
+        this.currentScreen = ENUM_CELEBRATION_STEPS.SPECIAL_MESSAGE_WITH_TITLE;
+        break;
+      case ENUM_CELEBRATION_STEPS.BALLOONS:
+        this.currentScreen = ENUM_CELEBRATION_STEPS.SPECIAL_MESSAGE_WITH_TITLE;
         break;
       case ENUM_CELEBRATION_STEPS.SPECIAL_MESSAGE_WITH_TITLE:
         this.currentScreen = ENUM_CELEBRATION_STEPS.WINNER_INFO

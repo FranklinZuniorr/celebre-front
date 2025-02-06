@@ -14,6 +14,23 @@
     position: fixed;
     overflow: hidden;
 
+    &_explosion {
+        position: absolute;
+        width: 20rem;
+        height: 20rem;
+    }
+
+    &_explosion2 {
+        position: absolute;
+        width: 40rem;
+        height: 40rem;
+
+        @media only screen and (max-width: 600px) {
+            width: 20rem;
+            height: 20rem;
+        }
+    }
+
     img {
         width: 5rem;
         height: 5rem;

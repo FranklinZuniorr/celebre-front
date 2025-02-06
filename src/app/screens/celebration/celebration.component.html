@@ -28,6 +28,7 @@
     *ngIf="currentScreen === ENUM_CELEBRATION_STEPS.SPECIAL_MESSAGE_WITH_TITLE" 
     [message]="celebrationData?.description || '-'"
     />
+    <app-balloons *ngIf="currentScreen === ENUM_CELEBRATION_STEPS.BALLOONS" (onDestroyBalloon)="handleScreenNext($event)" />
     <app-end 
     *ngIf="currentScreen === ENUM_CELEBRATION_STEPS.END" 
     [title]="celebrationData?.celebrationTitle || '-'"

@@ -1,0 +1,7 @@
+<div class="balloons">
+    <ng-lottie *ngIf="isClickedBalloon" class="balloons_firework" [options]="options" />
+    <div class="balloons_content">
+        <span id="balloon-text">Toque no balão!</span>
+        <img id="balloon" src="assets/images/balloon.svg" (click)="onClickBalloon()" alt="balloon" />
+    </div>
+</div>

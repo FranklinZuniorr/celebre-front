@@ -11,6 +11,7 @@
     box-sizing: border-box;
     padding-left: 1rem;
     padding-right: 1rem;
+    overflow: hidden;
 
     &_content {
         display: flex;
@@ -24,6 +25,15 @@
             flex-direction: column;
             gap: 0.5rem;
             animation: entrance 1s ease 0s 1 normal forwards;
+            position: relative;
+
+            &_confetti {
+                position: absolute;
+                top: -28rem;
+                right: calc(50% - 25rem);
+                width: 50rem;
+                height: 50rem;
+            }
 
             &_title {
                 font-size: 20px;

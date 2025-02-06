@@ -34,7 +34,7 @@
                 animation: exitBalloonText 1s ease 0s 1 normal forwards;
 
                 @media only screen and (max-width: 1024px) {
-                    animation: exitBalloonTextMobile 1s ease 0s 1 normal forwards;
+                    animation: exitBalloonTextMobile 1s ease 0s 1 normal forwards !important;
                 }
     
                 @keyframes exitBalloonText {

@@ -137,6 +137,7 @@ export class FormNewCelebrationComponent {
         error: (error) => {
           this.isLoadingSubmittingForm = false;
           alert('Erro ao processar o pagamento.');
+          console.log(error)
         }
       });
     }

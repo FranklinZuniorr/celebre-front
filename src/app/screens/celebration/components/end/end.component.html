@@ -1,0 +1,17 @@
+<div class="end">
+    <div class="end_content">
+        <div class="end_content_texts">
+            <ng-lottie class="end_content_texts_confetti" [options]="optionsFireworkConfetties" />
+            <div class="end_content_texts_title">{{ title }}</div>
+            <div class="end_content_texts_endPhrase">{{ endPhrase }}</div>
+        </div>
+        <div class="end_content_youtube">
+            <iframe 
+            id="ytplayer" 
+            type="text/html"
+            [src]="youtubeUrl"
+            frameborder="0"
+            ></iframe>
+        </div>
+    </div>
+</div>

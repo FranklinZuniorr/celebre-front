@@ -1,0 +1,44 @@
+<div *ngIf="isLoadingOnStart" class="celebrationIsLoadingOnStart">
+    <mat-spinner [diameter]="30"></mat-spinner>
+</div>
+
+<div *ngIf="!isLoadingOnStart" class="celebration">
+    <div class="celebration_controls">
+        <button 
+        (click)="handleScreenBack()"
+        [ngStyle]="{ 'opacity': currentScreen === ENUM_CELEBRATION_STEPS.PRESENTATION ? '0.5' : '1' }"
+        >
+            <mat-icon aria-hidden="false" fontIcon="chevron_left"></mat-icon>
+        </button>
+        <button 
+        (click)="handleNavigateToHome()"
+        >
+            <mat-icon aria-hidden="false" fontIcon="attach_money"></mat-icon>
+        </button>
+        <button 
+        (click)="handleScreenNext()" 
+        [ngStyle]="{ 'opacity': currentScreen === ENUM_CELEBRATION_STEPS.END ? '0.5' : '1' }"
+        >
+            <mat-icon aria-hidden="false" fontIcon="chevron_right"></mat-icon>
+        </button>
+    </div>
+    <app-presentation *ngIf="currentScreen === ENUM_CELEBRATION_STEPS.PRESENTATION" />
+    <app-gift *ngIf="currentScreen === ENUM_CELEBRATION_STEPS.GIFT" (onClickGift)="handleScreenNext($event)" />
+    <app-winner-info 
+    *ngIf="currentScreen === ENUM_CELEBRATION_STEPS.WINNER_INFO" 
+    [username]="celebrationData?.personName || '-'"
+    [photo]="celebrationData?.imageLink || ''"
+    />
+    <app-special-message 
+    *ngIf="currentScreen === ENUM_CELEBRATION_STEPS.SPECIAL_MESSAGE_WITH_TITLE" 
+    [message]="celebrationData?.description || '-'"
+    />
+    <app-balloons *ngIf="currentScreen === ENUM_CELEBRATION_STEPS.BALLOONS" (onDestroyBalloon)="handleScreenNext($event)" />
+    <app-end 
+    *ngIf="currentScreen === ENUM_CELEBRATION_STEPS.END" 
+    [title]="celebrationData?.celebrationTitle || '-'"
+    [endPhrase]="celebrationData?.endPhrase || '-'"
+    [youtubeUrl]="celebrationData?.youtubeUrl || ''"
+    />
+</div>
+

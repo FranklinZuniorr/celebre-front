@@ -22,12 +22,10 @@ interface CreateNewCelebrationReturn {
   providedIn: 'root',
 })
 export class CheckoutService {
-
-  private apiUrl = `${environment.apiUrl}/payment/checkout-product-base`;
-
   constructor(private http: HttpClient) {}
 
   createNewCelebration(params: CreateNewCelebrationParams): Observable<CreateNewCelebrationReturn> {
+    const apiUrl: string = `${environment.apiUrl}/payment/checkout-product-base`;
     let httpParams = new HttpParams();
     
     Object.keys(params).forEach(key => {
@@ -35,7 +33,7 @@ export class CheckoutService {
     });
   
     const response: Observable<CreateNewCelebrationReturn> = 
-      this.http.get<CreateNewCelebrationReturn>(this.apiUrl, { params: httpParams });
+      this.http.get<CreateNewCelebrationReturn>(apiUrl, { params: httpParams });
     
     return response;
   }

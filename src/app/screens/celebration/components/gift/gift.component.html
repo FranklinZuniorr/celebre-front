@@ -1,0 +1,5 @@
+<div class="gift">
+    <ng-lottie class="gift_explosion" [options]="optionsExplosion" />
+    <ng-lottie *ngIf="isClickedGift" class="gift_explosion2" [options]="optionsExplosion2" />
+    <img id="gift" src="assets/images/gift-box.svg" alt="gift" (click)="onClick()" />
+</div>

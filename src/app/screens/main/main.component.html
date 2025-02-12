@@ -10,6 +10,7 @@
             [ngStyle]="{'textDecoration': currentArea === item.value ? 'underline' : 'none'}"
             (click)="handleChangeCurrentArea(item.value)"
             >
+                <mat-icon aria-hidden="false" [fontIcon]="optionsModelIcons[item.value]"></mat-icon>
                 {{ item.text }}
             </span>
         </div>

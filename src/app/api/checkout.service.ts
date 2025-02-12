@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 
-interface CreateNewCelebrationParams {
+export interface CreateNewCelebrationParams {
   celebrationTitle: string;
   personName: string;
   description: string;

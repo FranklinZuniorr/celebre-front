@@ -13,6 +13,19 @@
                 {{ item.text }}
             </span>
         </div>
-        <app-form-new-celebration *ngIf="currentArea === ENUM_MAIN_AREAS.GENERAL" />
+        <app-form-new-celebration 
+        *ngIf="currentArea === ENUM_MAIN_AREAS.GENERAL" 
+        [defaultFormData]="currentSelectedModel"
+        />
+        <div
+        class="main_formArea_models"
+        *ngIf="currentArea === ENUM_MAIN_AREAS.MODELS" 
+        >
+            <app-model-card-celebration 
+            *ngFor="let item of optionsModel" 
+            [infos]="item" 
+            (onClickCard)="handleSelectModel($event)"
+            />
+        </div>
     </div>
 </div>

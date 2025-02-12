@@ -4,6 +4,15 @@
         <span class="main_infos_subTitle">Crie sites personalizados para comemorar momentos inesquecíveis!</span>
     </div>
     <div class="main_formArea">
-        <app-form-new-celebration />
+        <div class="main_formArea_tab">
+            <span 
+            *ngFor="let item of optionsTap"
+            [ngStyle]="{'textDecoration': currentArea === item.value ? 'underline' : 'none'}"
+            (click)="handleChangeCurrentArea(item.value)"
+            >
+                {{ item.text }}
+            </span>
+        </div>
+        <app-form-new-celebration *ngIf="currentArea === ENUM_MAIN_AREAS.GENERAL" />
     </div>
 </div>

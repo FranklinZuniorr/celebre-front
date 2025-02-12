@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit, Renderer2 } from '@angular/core';
 import { FormNewCelebrationComponent } from './components/form-new-celebration/form-new-celebration.component';
 import { DelayDigitationComponent } from '../../components/delay-digitation/delay-digitation.component';
-import { ENUM_MAIN_AREAS } from './constants';
+import { ENUM_MAIN_AREAS, optionsModel } from './constants';
 import { NgFor, NgIf, NgStyle } from '@angular/common';
 import { Option } from '../../types';
 import { ModelCardCelebrationComponent, ModelCardCelebrationProps } from './components/model-card-celebration/model-card-celebration.component';
@@ -21,21 +21,7 @@ export class MainComponent implements OnInit, OnDestroy {
     {text: 'Geral', value: ENUM_MAIN_AREAS.GENERAL},
     {text: 'Modelos', value: ENUM_MAIN_AREAS.MODELS},
   ];
-  optionsModel: ModelCardCelebrationProps[] = [
-    { 
-      title: 'Carnaval', 
-      backgroundImage: 'https://t3.ftcdn.net/jpg/03/10/03/20/360_F_310032026_jq6nyLbIoG9HeZPp2EePPIsNLzOPZsd8.jpg', 
-      celebrationData: {
-        celebrationTitle: 'teste',
-        description: 'teste teste',
-        email: 'teste@gmail.com',
-        endPhrase: 'teste teste teste',
-        imageLink: 'https://img.freepik.com/vetores-premium/icone-de-perfil-de-avatar-em-estilo-plano-ilustracao-vetorial-de-perfil-de-usuario-masculino-em-fundo-isolado-conceito-de-negocio-de-sinal-de-perfil-masculino_157943-38764.jpg?semt=ais_hybrid',
-        personName: 'teste teste',
-        youtubeUrl: 'https://www.youtube.com/watch?v=-RbeVRFaV3I'
-      }
-    }
-  ]
+  optionsModel: ModelCardCelebrationProps[] = optionsModel;
 
   constructor(private renderer: Renderer2) {}
 

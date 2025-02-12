@@ -53,7 +53,7 @@ export class CelebrationComponent implements OnInit, OnDestroy {
           this.sanitizer.bypassSecurityTrustResourceUrl(value.celebration.youtubeUrl.replace('watch?v=', 'embed/') + '?&autoplay=0');
           this.isLoadingOnStart = false;
         },
-        error: (error) => {
+        error: () => {
           alert('Erro ao obter celebração.');
         }
       });

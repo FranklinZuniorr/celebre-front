@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -7,7 +7,7 @@ import { OptionsGenericSuggestionsComponent } from '../../../../components/optio
 import { OptionsGenericSuggestionsAdvancedComponent } from '../../../../components/options-generic-suggestions-advanced/options-generic-suggestions-advanced.component';
 import { Option } from '../../../../types';
 import {MatIconModule} from '@angular/material/icon';
-import { CheckoutService } from '../../../../api/checkout.service';
+import { CheckoutService, CreateNewCelebrationParams } from '../../../../api/checkout.service';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @Component({
@@ -25,7 +25,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
   templateUrl: './form-new-celebration.component.html',
   styleUrl: './form-new-celebration.component.scss',
 })
-export class FormNewCelebrationComponent {
+export class FormNewCelebrationComponent implements OnChanges {
+  @Input() defaultFormData: CreateNewCelebrationParams | undefined;
   myForm: FormGroup;
   submitted = false;
   isTrySubmitForm = false;
@@ -83,6 +84,19 @@ export class FormNewCelebrationComponent {
     this.handleSetSuggestionYoutubeUrl = this.handleSetSuggestionYoutubeUrl.bind(this);
     this.handleSetSuggestionEndPhrase = this.handleSetSuggestionEndPhrase.bind(this);
     this.handleSetSuggestionDescription = this.handleSetSuggestionDescription.bind(this);
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    const defaultFormDataChange = changes['defaultFormData'];
+    if (defaultFormDataChange) {
+      this.handleSetModelToForm(defaultFormDataChange.currentValue);
+    }
+  }
+
+  handleSetModelToForm(value: CreateNewCelebrationParams | undefined) {
+    if (!value) return;
+    this.myForm.patchValue(value);
+    this.selectedImage = value.imageLink;
   }
 
   handleSetSuggestionCelebrationTitle(value: string) {

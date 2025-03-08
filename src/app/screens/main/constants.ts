@@ -8,6 +8,19 @@ export enum ENUM_MAIN_AREAS {
 export const defaultAvatar = 'https://static.vecteezy.com/system/resources/previews/005/544/718/non_2x/profile-icon-design-free-vector.jpg';
 
 export const optionsModel: ModelCardCelebrationProps[] = [
+    {
+      title: 'Dia da Mulher',
+      backgroundImage: 'https://wallpapercave.com/wp/wp8993713.jpg',
+      celebrationData: {
+        celebrationTitle: 'Feliz Dia das Mulheres! 💐',
+        description: 'Hoje é o dia de celebrar sua força, determinação e essência. Que seu dia seja repleto de alegria, reconhecimento e amor! 💖✨',
+        email: 'mulherinspiradora@gmail.com',
+        endPhrase: 'Você é incrível, hoje e sempre! 🌸',
+        imageLink: defaultAvatar,
+        personName: 'Nome da homenageada',
+        youtubeUrl: 'https://www.youtube.com/watch?v=O040xuq2FR0'
+      }
+    },
     { 
       title: 'Carnaval', 
       backgroundImage: 'https://t3.ftcdn.net/jpg/03/10/03/20/360_F_310032026_jq6nyLbIoG9HeZPp2EePPIsNLzOPZsd8.jpg', 
